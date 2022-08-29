@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.BusinessStartView">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <AbsoluteLayout LayoutBounds=".5,.5,.3,.3" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="5">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <ActivityIndicator IsRunning="True"></ActivityIndicator>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Text="Validando usuario"
+                               Style="{DynamicResource TitleStyle}"
+                               MinimumWidthRequest="250" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

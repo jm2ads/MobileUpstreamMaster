@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.SettingsView"
+             Title="Ajustes">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="myBodyStyle" TargetType="Label"
+              BaseResourceKey="BodyStyle">
+                <Setter Property="TextColor" Value="Accent" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Opcion 1"
+            Order="Secondary"
+            Command="{Binding DisplayMessageCommand}"
+            />
+        <ToolbarItem
+            Text="Opcion 2"
+            Order="Secondary"
+            Command="{Binding DisplayMessageCommand}"
+            />
+        <ToolbarItem
+            Text="Opcion 3"
+            Order="Secondary"
+            Command="{Binding DisplayMessage3Command}"
+            />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"></ActivityIndicator>
+            <StackLayout Orientation="Horizontal">
+                <Label Margin="10" Text="Modo online" Style="{DynamicResource TitsleStyle}" />
+                <Switch  IsToggled="{Binding SyncServer}"></Switch>
+            </StackLayout>
+            <Button Text="Iniciar Sincronizacion" Command="{Binding SincronizeCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

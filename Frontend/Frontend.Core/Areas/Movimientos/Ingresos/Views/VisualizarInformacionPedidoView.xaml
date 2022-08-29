@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Areas.Views.VisualizarInformacionPedidoView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <ActivityIndicator IsEnabled="{Binding IsBusy}" 
+                                       IsVisible="{Binding IsBusy}" 
+                                       IsRunning="{Binding IsBusy}"
+                                   VerticalOptions="CenterAndExpand"/>
+                <StackLayout Spacing="20" Style="{StaticResource ContentBase}">
+                    <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                        <StackLayout Margin="10" VerticalOptions="Start" IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+
+                            <Label Text="Clase de movimiento"  Style="{StaticResource TextLabel}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding claseMovimiento}"
+                                   Style="{StaticResource ValueLabel}"
+                                   HorizontalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+
+                            <Label Text="Centro"  Style="{StaticResource TextLabel}"/>
+                            <Label Text="{Binding setting.CentroActivo.Codigo}"
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand" 
+                                   HorizontalOptions="FillAndExpand" />
+
+                            <Label Text="Nota de entrega"  Style="{StaticResource TextLabel}"/>
+                            <Label Text="{Binding NotaDeEntrega.NumeroNotaDeEntrega}"         
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+
+                            <Label Text="Carta de porte"  Style="{StaticResource TextLabel}"/>
+                            <Label Text="{Binding NotaDeEntrega.CartaDePorte}"         
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="Texto de cabecera"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding NotaDeEntrega.TextoDeCabecera}" 
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Fecha de documento" Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding FechaDocumento}"    
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Fecha de contabilización" Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding FechaContabilizacion, Mode=TwoWay}"  
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand">
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

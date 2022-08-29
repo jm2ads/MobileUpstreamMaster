@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.InformacionInventarioMasivoView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Style="{StaticResource ContentBase}"
+                         VerticalOptions="FillAndExpand">
+                <StackLayout IsVisible="{Binding IsBusy}"
+                             VerticalOptions="CenterAndExpand">
+                    <ActivityIndicator IsEnabled="{Binding IsBusy}"
+                                       IsVisible="{Binding IsBusy}"
+                                       IsRunning="{Binding IsBusy}"
+                                       VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                    <Label FontSize="Small"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                           Text="Obteniendo material..." />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}"
+                             VerticalOptions="FillAndExpand">
+                    <Frame StyleClass="card"
+                           HasShadow="True"
+                           VerticalOptions="Fill">
+                        <StackLayout Margin="10"
+                                     VerticalOptions="Start">
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Documento"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding inventarioMasivo.NumeroProvisorio}"
+                                       Style="{StaticResource ValueLabel}"
+                                       LineBreakMode="WordWrap"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Centro"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding inventarioMasivo.Centro.Codigo}"
+                                       Style="{StaticResource ValueLabel}"
+                                       LineBreakMode="WordWrap"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Ubicación"
+                                       Style="{StaticResource TextLabel}" />
+                                <customRenders:AutoCompleteEntry Text="{Binding Ubicacion, Mode=TwoWay}"
+                                                                 Placeholder="Ingresar ubicación"
+                                                                 ItemsSource="{Binding ListaUbicaciones}"></customRenders:AutoCompleteEntry>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="Fecha de creación"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding FechaCreacion}"
+                                       Style="{StaticResource ValueLabel}"
+                                       LineBreakMode="WordWrap"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="Fecha de documento"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding FechaDocumento}"
+                                       Style="{StaticResource ValueLabel}"
+                                       LineBreakMode="WordWrap"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Margin="10" VerticalOptions="EndAndExpand">
+                                <Button Text="Excluir almacenes"
+                                        Command="{Binding FiltrarAlmacenesCommand}"
+                                        VerticalOptions="EndAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+                                        Style="{StaticResource MainButton}" />
+                            </StackLayout>
+                            <customRenders:InfoCardView Message="{Binding AlmacenesExcluidos, Mode=TwoWay}" />
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Margin="10"
+                                 VerticalOptions="EndAndExpand">
+                        <Button Text="Crear"
+                                Command="{Binding CrearInventarioMasivoCommand}"
+                                VerticalOptions="EndAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                Style="{StaticResource MainButton}" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Commons.CustomRenders.TituloSubtituloNavigationView">
+  <ContentView.Content>
+        <StackLayout Style="{StaticResource SecondaryMenu}" Orientation="Horizontal">
+            <Image Source="ic_keyboard_backspace_black_24dp.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="imagenCommand"
+                                              NumberOfTapsRequired="1">
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            <StackLayout>
+                <Label x:Name="tituloText" Text="Titulo" Style="{DynamicResource TitleStyle}"></Label>
+                <Label x:Name="subtituloText" Text="Subtitulo" Style="{DynamicResource SubtitleStyle}"></Label>
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

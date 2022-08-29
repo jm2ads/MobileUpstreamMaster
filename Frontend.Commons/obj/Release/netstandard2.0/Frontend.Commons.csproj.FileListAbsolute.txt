@@ -1,0 +1,10 @@
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\bin\Release\netstandard2.0\Frontend.Commons.deps.json
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\bin\Release\netstandard2.0\Frontend.Commons.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\bin\Release\netstandard2.0\Frontend.Commons.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.csproj.AssemblyReference.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.GeneratedMSBuildEditorConfig.editorconfig
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.AssemblyInfoInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.AssemblyInfo.cs
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.csproj.CoreCompileInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Commons\obj\Release\netstandard2.0\Frontend.Commons.pdb

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "63970276656",
+    "firebase_url": "https://qr-almacen-prueba.firebaseio.com",
+    "project_id": "qr-almacen-prueba",
+    "storage_bucket": "qr-almacen-prueba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63970276656:android:37747cef60debf13",
+        "android_client_info": {
+          "package_name": "MAU_DEV.MAU_DEV"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63970276656-tv7qp90irpjsropfl99notgim75asvt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAgSRNMPK2ESx7zARwnpcTG5jFHAl74GQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63970276656-tv7qp90irpjsropfl99notgim75asvt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

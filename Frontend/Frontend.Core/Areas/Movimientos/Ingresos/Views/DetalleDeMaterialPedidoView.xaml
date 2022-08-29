@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders"
+             x:Class="Frontend.Core.Areas.Views.DetalleDeMaterialPedidoView"
+             xmlns:behavoirs="clr-namespace:Frontend.Core.Commons.Behavoirs;assembly=Frontend.Core"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Style="{StaticResource ContentBase}">
+                <StackLayout IsVisible="{Binding IsBusy}"
+                         VerticalOptions="CenterAndExpand">
+                    <ActivityIndicator IsEnabled="{Binding IsBusy}" 
+                                   IsVisible="{Binding IsBusy}" 
+                                   IsRunning="{Binding IsBusy}"
+                                   VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                    <Label FontSize="Small"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                        Text="Obteniendo material..."/>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                    <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                        <StackLayout Margin="10" VerticalOptions="Start">
+                            <Label Text="Código"  Style="{StaticResource TextLabel}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding DetalleNotaDeEntregaPosicion.DetallePedidoPosicion.DetallePedido.Material.Codigo}"
+                                   IsEnabled="False"
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand" 
+                                   HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <Label Text="Texto breve"  Style="{StaticResource TextLabel}"/>
+                            <Label Text="{Binding DetalleNotaDeEntregaPosicion.DetallePedidoPosicion.DetallePedido.Material.Descripcion}"
+                                Style="{StaticResource ValueLabel}"
+                               VerticalOptions="StartAndExpand" 
+                               HorizontalOptions="FillAndExpand" />
+
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Posición"  Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding DetalleNotaDeEntregaPosicion.DetallePedidoPosicion.DetallePedido.Posicion}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ValueLabel}"
+                                        VerticalOptions="StartAndExpand"
+                                        HorizontalOptions="FillAndExpand" />
+                                    <Label Text="Almacén" Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding Almacen.Value.Codigo, Mode=TwoWay}" 
+                                       IsVisible="{Binding AlmacenEditable, Converter={StaticResource InverseBoolConverter}}"
+                                       IsEnabled="False"
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                                    <customRenders:PickerWithIcon
+                                    Title="Seleccione..."
+                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="80"
+                                    Image="ic_keyboard_arrow_down_black_24dp"
+                                    IsVisible="{Binding AlmacenEditable}"
+                                    ItemsSource="{Binding ListaAlmacen}"
+                                    ItemDisplayBinding="{Binding DisplayDescription}"  
+                                    SelectedIndex="{Binding AlmacenIndex, Mode=TwoWay}"                                   
+                                    SelectedItem="{Binding Almacen.Value, Mode=OneWayToSource}" />
+                                    <Label Text="{Binding Almacen.Errors, Converter={StaticResource FirstValidationError}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Ubicación" Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding Ubicacion, Mode=TwoWay}"
+                                       Style="{StaticResource ValueLabel}"
+                                       IsEnabled="False"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                                    <Label Text="Lote" Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding ClaseDeValoracion.Value.Codigo, Mode=TwoWay}"
+                                       Style="{StaticResource ValueLabel}"
+                                       IsVisible="{Binding ClaseDeValoracionEditable, Converter={StaticResource InverseBoolConverter}}"
+                                       IsEnabled="False"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                                    <customRenders:PickerWithIcon
+                                        Title="Seleccione..."
+                                        x:Name="pickerBatch2"
+                                        HorizontalOptions="FillAndExpand"
+                                        WidthRequest="80"
+                                        IsVisible="{Binding ClaseDeValoracionEditable}"
+                                        Image="ic_keyboard_arrow_down_black_24dp"
+                                        ItemsSource="{Binding ListaClaseDeValoracion}"
+                                        ItemDisplayBinding="{Binding Codigo}"
+                                        SelectedIndex="{Binding ClaseDeValoracionIndex, Mode=TwoWay}"                                    
+                                        SelectedItem="{Binding ClaseDeValoracion.Value, Mode=OneWayToSource}" />
+                                    <Label Text="{Binding ClaseDeValoracion.Errors, Converter={StaticResource FirstValidationError}}"
+                                           IsVisible="{Binding ClaseDeValoracion.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                           VerticalOptions="Fill"
+                                           Style="{StaticResource ValidationErrorLabelStyle}" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Cantidad"  Style="{StaticResource TextLabel}"/>
+                                    <customRenders:NumericEntry Text="{Binding CantidadPedida.Value, Mode=TwoWay}"
+                                       Keyboard="Numeric"
+                                       IsEnabled="True"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand">
+                                        <Entry.Style>
+                                            <OnPlatform x:TypeArguments="Style" 
+                                                    iOS="{StaticResource EntryStyle}"
+                                                    Android="{StaticResource EntryStyle}"/>
+                                        </Entry.Style>
+                                        <Entry.Triggers>
+                                            <DataTrigger
+                                            TargetType="Entry"
+                                            Binding="{Binding Cantidad.IsValid}"
+                                            Value="False">
+                                                <Setter Property="behavoirs:LineColorBehavior.LineColor"
+                                                    Value="{StaticResource RedColor}" />
+                                            </DataTrigger>
+                                        </Entry.Triggers>
+                                    </customRenders:NumericEntry>
+                                    <Label Text="{Binding CantidadPedida.Errors, Converter={StaticResource FirstValidationError}}"
+                                       Style="{StaticResource ValidationErrorLabelStyle}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Unidad" Style="{StaticResource TextLabel}"/>
+                                    <Label Text="{Binding DetalleNotaDeEntregaPosicion.DetallePedidoPosicion.DetallePedido.Unidad}"
+                                       IsEnabled="False"
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand" 
+                                       HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Texto posición"  Style="{StaticResource TextLabel}"/>
+                                <Entry Text="{Binding textoPosicion, Mode=TwoWay}"  
+                                       Placeholder="Ingrese texto posición"
+                                       MaxLength="50"
+                                       VerticalOptions="StartAndExpand" 
+                                       HorizontalOptions="FillAndExpand">
+                                </Entry>
+                            </StackLayout>
+                            <Label Text="Puesto de descarga" Style="{StaticResource TextLabel}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Entry Text="{Binding PuestoDeDescarga, Mode=TwoWay}"  
+                                   Placeholder="Ingrese puesto de descarga"
+                                   MaxLength="25"
+                                   HorizontalOptions="FillAndExpand">
+                                </Entry>
+                            </StackLayout>
+                            <Label Text="Destinatario mercancía" Style="{StaticResource TextLabel}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Entry Text="{Binding DestinatarioMercancia }"    
+                                   IsEnabled="True"
+                                   Placeholder="Ingrese destinatario mercancía"
+                                   MaxLength="12"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <Label Text="Tipo de stock"  Style="{StaticResource TextLabel}"/>
+                            <Entry Text="{Binding TipoStock.Value, Mode=TwoWay}"   
+                               IsVisible="{Binding TipoStockEditable}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            <customRenders:PickerWithIcon
+                            Title="Seleccione..."
+                            x:Name="pickerBatch"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding TipoStockEditable, Converter={StaticResource InverseBoolConverter}}"
+                            WidthRequest="80"
+                            Image="ic_keyboard_arrow_down_black_24dp"
+                            ItemsSource="{Binding ListaTipoStock, Mode=TwoWay}"                                      
+                            SelectedItem="{Binding TipoStock.Value}" />
+                            <Label Text="{Binding TipoStock.Errors, Converter={StaticResource FirstValidationError}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                            <Label Text="Stock especial" Style="{StaticResource TextLabel}"/>
+                            <Entry Text="{Binding StockEspecial.Value.Descripcion}"   
+                               IsVisible="{Binding StockEspecialEditable, Converter={StaticResource InverseBoolConverter}}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            <customRenders:PickerWithIcon
+                            Title="Seleccione..."
+                            HorizontalOptions="FillAndExpand"
+                            WidthRequest="80"
+                            Image="ic_keyboard_arrow_down_black_24dp"
+                            IsVisible="{Binding StockEspecialEditable}"
+                            ItemsSource="{Binding ListaStockEspecial}"
+                            ItemDisplayBinding="{Binding Descripcion}" 
+                            SelectedIndex="{Binding stockEspecialIndex}"
+                            SelectedItem="{Binding StockEspecial.Value}" />
+                            <Label Text="{Binding StockEspecial.Errors, Converter={StaticResource FirstValidationError}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Entrega final" Style="{StaticResource TextLabel}" />
+                                <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding EntregaFinal}"></Switch>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                    <Button x:Name="btnConfirmar"
+                                Text="Confirmar"
+                                Command="{Binding ConfirmarMaterialCommand}"
+                                VerticalOptions="EndAndExpand" 
+                                HorizontalOptions="FillAndExpand" 
+                            Style="{StaticResource MainButton}" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

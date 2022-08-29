@@ -1,0 +1,15 @@
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.IServices.deps.json
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.IServices.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.IServices.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.Business.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.Commons.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.Business.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\bin\Release\netstandard2.0\Frontend.Commons.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.csproj.AssemblyReference.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.GeneratedMSBuildEditorConfig.editorconfig
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.AssemblyInfoInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.AssemblyInfo.cs
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.csproj.CoreCompileInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.csproj.CopyComplete
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend\Frontend.IServices\obj\Release\netstandard2.0\Frontend.IServices.pdb

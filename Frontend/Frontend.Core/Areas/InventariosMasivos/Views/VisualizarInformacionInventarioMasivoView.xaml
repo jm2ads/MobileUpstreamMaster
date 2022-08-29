@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders"
+             x:Class="Frontend.Core.Views.VisualizarInformacionInventarioMasivoView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Style="{StaticResource ContentBase}">
+                <Frame StyleClass="card"
+                       HasShadow="True"
+                       VerticalOptions="Fill">
+                    <StackLayout Margin="10"
+                                 VerticalOptions="Start"
+                                 IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                        <Label Text="Centro"
+                               Style="{StaticResource TextLabel}" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding inventarioMasivo.Centro.Codigo}"
+                                   Style="{StaticResource ValueLabel}"
+                                   HorizontalOptions="FillAndExpand"></Label>
+                        </StackLayout>
+                        <Label Text="Ubicación"
+                               Style="{StaticResource TextLabel}" />
+                        <Label Text="{Binding inventarioMasivo.Ubicacion}"
+                               Style="{StaticResource ValueLabel}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                        <Label Text="Fecha de creación"
+                               Style="{StaticResource TextLabel}" />
+                        <Label Text="{Binding FechaCreacion}"
+                               Style="{StaticResource ValueLabel}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Fecha de documento"
+                                   Style="{StaticResource TextLabel}" />
+                            <Label Text="{Binding FechaDocumento}"
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <customRenders:InfoCardView Message="{Binding AlmacenesExcluidos, Mode=TwoWay}" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

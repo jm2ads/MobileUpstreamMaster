@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.VisualizarInformacionInventarioView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Style="{StaticResource ContentBase}">
+                <Frame StyleClass="card"
+                       HasShadow="True"
+                       VerticalOptions="Fill">
+                    <StackLayout Margin="10"
+                                 VerticalOptions="Start"
+                                 IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                        <Label Text="Centro"
+                               Style="{StaticResource TextLabel}" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding inventario.Centro.Codigo}"
+                                   Style="{StaticResource ValueLabel}"
+                                   HorizontalOptions="FillAndExpand"></Label>
+                        </StackLayout>
+                        <Label Text="Almacén"
+                               Style="{StaticResource TextLabel}"
+                               IsVisible="{Binding IsEnableAlmacen}" />
+                        <Label Text="{Binding inventario.Almacen.Codigo}"
+                               Style="{StaticResource ValueLabel}"
+                               IsVisible="{Binding IsEnableAlmacen}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                        <Label Text="Stock especial"
+                               Style="{StaticResource TextLabel}" />
+                        <Label Text="{Binding inventario.StockEspecial.Descripcion}"
+                               Style="{StaticResource ValueLabel}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Fecha de creación"
+                                   Style="{StaticResource TextLabel}" />
+                            <Label Text="{Binding FechaCreacion}"
+                                   Style="{StaticResource ValueLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="Fecha de recuento"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding FechaRecuento}"
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"
+                                     IsVisible="{Binding IsMotivoRechazoVisible}">
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="Motivo de rechazo"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding inventario.ComentarioRechazo}"
+                                       Style="{StaticResource ValueRedLabel}"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.ListadoPosicionesInventarioMasivoView"
+             x:Name="ListaPosicionesInventarioMasivoPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="outline_info_white_24.png"
+                     Command="{Binding GoToCabeceraCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <customRenders:CustomSearchBar Placeholder="Filtrar por posición"
+                                           TextChanged="SearchBar_TextChanged"
+                                           Style="{StaticResource SearchBackground}"></customRenders:CustomSearchBar>
+            <ListView x:Name="ListViewItems"
+                      CachingStrategy="RecycleElementAndDataTemplate"
+                      ItemsSource="{Binding ListaDetallesInventarioMasivo}"
+                      HasUnevenRows="true"
+                      VerticalOptions="FillAndExpand"
+                      SeparatorVisibility="None"
+                      SelectedItem="{Binding DetalleInventarioMasivoSelected, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0"
+                                               Grid.Column="0"
+                                               Text="Pos"
+                                               VerticalOptions="EndAndExpand"></Label>
+                                        <Label Grid.Row="1"
+                                               Grid.Column="0"
+                                               Text="{Binding DisplayPosicion}"
+                                               FontSize="Small"
+                                               VerticalOptions="StartAndExpand"
+                                               FontAttributes="Bold"></Label>
+                                        <Label Grid.Row="0"
+                                               Grid.Column="1"
+                                               Text="Cant"
+                                               VerticalOptions="EndAndExpand"></Label>
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               Text="{Binding DisplayCantidad}"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalOptions="EndAndExpand"
+                                               FontAttributes="Bold"></Label>
+                                        <Label Text="Ubi"
+                                               Grid.Row="2"
+                                               Grid.Column="0"
+                                               VerticalOptions="EndAndExpand"></Label>
+                                        <Label Text="{Binding Ubicacion, Converter={StaticResource EmptyStringConverter}}"
+                                               Grid.Row="2"
+                                               Grid.Column="1"
+                                               VerticalOptions="StartAndExpand"
+                                               LineBreakMode="TailTruncation"
+                                               FontAttributes="Bold"></Label>
+                                        <Label Grid.Row="3"
+                                               Grid.Column="0"
+                                               Grid.ColumnSpan="2"
+                                               FontAttributes="Bold"
+                                               Text="{Binding Material.Codigo}"
+                                               VerticalOptions="StartAndExpand"
+                                               LineBreakMode="TailTruncation"></Label>
+                                        <Label Grid.Row="4"
+                                               Grid.Column="0"
+                                               Grid.ColumnSpan="2"
+                                               Text="{Binding Material.Descripcion}"
+                                               VerticalOptions="StartAndExpand"
+                                               LineBreakMode="TailTruncation"></Label>
+                                        <ImageButton HorizontalOptions="End"
+                                                     Grid.Row="0"
+                                                     Grid.Column="2"
+                                                     Grid.RowSpan="2"
+                                                     Source="baseline_highlight_off_black_24"
+                                                     BackgroundColor="Transparent"
+                                                     Command="{Binding Source={x:Reference ListaPosicionesInventarioMasivoPage}, Path=BindingContext.DeleteMaterialCommnad}"
+                                                     CommandParameter="{Binding .}"></ImageButton>
+                                        <ImageButton Grid.Row="2"
+                                                     Grid.Column="2"
+                                                     Grid.RowSpan="3"
+                                                     HorizontalOptions="EndAndExpand"
+                                                     Source="baseline_file_copy_black_24"
+                                                     BackgroundColor="Transparent"
+                                                     Command="{Binding Source={x:Reference ListaPosicionesInventarioMasivoPage}, Path=BindingContext.DuplicarMaterialCommnad}"
+                                                     CommandParameter="{Binding .}"></ImageButton>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Margin="10"
+                         VerticalOptions="EndAndExpand">
+                <Button Text="Agregar material"
+                        Command="{Binding AgregarMaterialCommnad}"
+                        IsEnabled="{Binding IsBusy, Converter= {StaticResource InverseBoolConverter}}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource MainButton}" />
+                <Button Text="Finalizar"
+                        Command="{Binding FinalizarCommand}"
+                        IsEnabled="{Binding IsBusy, Converter= {StaticResource InverseBoolConverter}}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource MainButton}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

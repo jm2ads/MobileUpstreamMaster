@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.DevolucionReservaView"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource ContentBase }">
+            <StackLayout Spacing="20" VerticalOptions="FillAndExpand">
+                <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                    <StackLayout VerticalOptions="Start" >
+                        <Label Text="Número de reserva" Style="{StaticResource TextLabel}"/>
+                        <customRenders:AutoCompleteEntry 
+                            x:Name="autocompleteDescripcion"
+                            Text="{Binding SearchValue, Mode=TwoWay}"
+                            Placeholder="Ingresar número de reserva"
+                            ItemsSource="{Binding ListCodigoReserva}"
+                            SearchCommand="{Binding SearchCommand}"
+                            ></customRenders:AutoCompleteEntry>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout VerticalOptions="EndAndExpand">
+                    <Button Text="Buscar"
+                            Style="{StaticResource MainButton}"
+                            Command="{Binding SearchCommand}"
+                            VerticalOptions="EndAndExpand" 
+                            HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

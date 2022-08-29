@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.SideBarMenuView"
+             Title="Menu">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              IsGroupingEnabled="True"
+              GroupDisplayBinding="{Binding Title}"
+              ItemsSource="{Binding HeaderItems}">
+            <ListView.Header>
+                <Grid  HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="menuBack.jpg"
+                           Grid.Column="0" Grid.Row="0"
+                           Scale="1"
+                           VerticalOptions="Start"
+                           Margin="0"
+                           Aspect="AspectFill"/>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140" />
+                            <RowDefinition Height="90" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image 
+                            Source="icon"
+                            Grid.Row="0" Grid.Column="0"
+                            Scale="3"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            Margin="20"/>
+                        <StackLayout
+                            Grid.Row="0" Grid.Column="1">
+                            <Label  
+                            
+                        Text="{Binding NombreUsuario}"
+                         Style="{StaticResource UserName}"
+                                FontSize="Small"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"/>
+                            <Label  
+                        Text="{Binding IdRed}"
+                        Style="{StaticResource UserId}"
+                                FontSize="Small"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="Center"/>
+                        </StackLayout>
+                        
+                    </Grid>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!-- Main design for our menu items -->
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                         Orientation="Horizontal"
+                                         Padding="40,10,0,0"
+                                         Spacing="20"
+                                     BackgroundColor="White">
+
+                            <Image   Source="{Binding Icon}" 
+                                         Scale="1"
+                                         WidthRequest="20"
+                                         HeightRequest="40"
+                                         VerticalOptions="Center"/>
+
+                            <Label   Text="{Binding Title}"
+                                         VerticalOptions="Center"
+                                         TextColor="Black"/>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     Margin="15,15,0,0"                                     
+                                         Spacing="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                      NumberOfTapsRequired="1"
+                                                      CommandParameter="{Binding .}"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <Image   Source="{Binding HeaderIcon}" 
+                                         Scale="1"
+                                         WidthRequest="20"
+                                         HeightRequest="40"
+                                         VerticalOptions="Center"/>                            
+                            <Label Text="{Binding Title}"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="CenterAndExpand"
+                                   Style="{StaticResource GroupItem}"/>
+                            <Button Image="{Binding StateIcon}"
+                                    IsVisible="{Binding StateIconVisible}"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Transparent"
+                                    BorderWidth="0"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Clicked="Button_Clicked"
+                                    CommandParameter="{Binding .}">
+                            </Button>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

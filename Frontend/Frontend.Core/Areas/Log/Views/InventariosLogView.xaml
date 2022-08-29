@@ -1,0 +1,59 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.InventariosLogView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Spacing="20">
+            <customRenders:EmptyView IsEnabled="{Binding HasInventario,Converter={StaticResource InverseBoolConverter}}"
+                                     IsVisible="{Binding HasInventario,Converter={StaticResource InverseBoolConverter}}"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="CenterAndExpand"
+                                     ActionCommand="{Binding GetInventariosLogsCommand}"
+                                     Image="imagen_emptystate"
+                                     TitleText="Lista vacía"
+                                     DetailText="No hay datos disponibles"></customRenders:EmptyView>
+            <ListView x:Name="ListViewItems"
+                      IsVisible="{Binding HasInventario}"
+                      IsEnabled="{Binding HasInventario}"
+                      ItemsSource="{Binding ListaInventarioLog}"
+                      HasUnevenRows="true"
+                      RefreshCommand="{Binding GetInventariosLogsCommand}"
+                      CachingStrategy="RecycleElementAndDataTemplate"
+                      IsRefreshing="{Binding IsRefreshing}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10">
+                                <StackLayout>
+                                    <StackLayout Orientation="Vertical"
+                                                 Spacing="10"
+                                                 Margin="15">
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Inventario"
+                                                       VerticalOptions="End"></Label>
+                                                <Label Text="{Binding Label}"
+                                                       FontSize="Medium"
+                                                       FontAttributes="Bold"
+                                                       VerticalOptions="Start"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{Binding Data}"
+                                                       VerticalOptions="Center"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

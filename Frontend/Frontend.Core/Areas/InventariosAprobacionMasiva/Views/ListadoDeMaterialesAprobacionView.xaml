@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="ListaPosicionesInventarioMasivoPage"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.ListadoDeMaterialesAprobacionView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <customRenders:EmptyView IsEnabled="{Binding HasInventario,Converter={StaticResource InverseBoolConverter}, Mode=TwoWay}"
+                                     IsVisible="{Binding HasInventario,Converter={StaticResource InverseBoolConverter}, Mode=TwoWay}"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="CenterAndExpand"
+                                     ActionCommand="{Binding GetInventariosProvisoriosAprobacionCommand}"
+                                     Image="imagen_emptystate"
+                                     TitleText="Lista vacía"
+                                     DetailText="No hay datos disponibles"></customRenders:EmptyView>
+            <StackLayout IsVisible="{Binding HasInventario, Mode=TwoWay}"
+                         IsEnabled="{Binding HasInventario, Mode=TwoWay}">
+                <customRenders:CustomSearchBar Placeholder="Filtrar por material"
+                                               TextChanged="SearchBar_TextChanged"
+                                               Style="{StaticResource SearchBackground}"></customRenders:CustomSearchBar>
+                <ListView x:Name="ListViewItems"
+                          CachingStrategy="RecycleElementAndDataTemplate"
+                          ItemsSource="{Binding ListaDetallesInventarios}"
+                          HasUnevenRows="true"
+                          VerticalOptions="FillAndExpand"
+                          SeparatorVisibility="None"
+                          IsRefreshing="{Binding IsRefreshingListado, Mode=OneWay}"
+                          SelectedItem="{Binding DetalleInventarioSelected, Mode=TwoWay}"
+                          SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Margin="10"
+                                       Padding="0"
+                                       BackgroundColor="{Binding DetalleInventario.EstadoConteo, Mode=OneWay,Converter={StaticResource ColorEstadoConteoConverter}}">
+                                    <StackLayout Orientation="Horizontal"
+                                                 Margin="8,0,0,0">
+                                        <StackLayout Orientation="Horizontal"
+                                                     Padding="10"
+                                                     VerticalOptions="FillAndExpand"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     BackgroundColor="White">
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                                  RowSpacing="0"
+                                                  ColumnSpacing="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="3*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding DetalleInventario.Inventario.Codigo}"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0"
+                                                       Grid.ColumnSpan="4"
+                                                       FontSize="Small"
+                                                       VerticalOptions="StartAndExpand"
+                                                       FontAttributes="Bold"></Label>
+                                                <Label Text="Pos"
+                                                       Grid.Row="1"
+                                                       FontSize="Small"
+                                                       Grid.Column="0"
+                                                       VerticalOptions="EndAndExpand"></Label>
+                                                <Label Text="Cant"
+                                                       Grid.Row="1"
+                                                       FontSize="Small"
+                                                       Grid.Column="1"
+                                                       Grid.ColumnSpan="3"
+                                                       VerticalOptions="EndAndExpand"></Label>
+                                                <Label Text="{Binding DetalleInventario.Posicion}"
+                                                       FontSize="Small"
+                                                       Grid.Row="2"
+                                                       Grid.Column="0"
+                                                       LineBreakMode="TailTruncation"
+                                                       FontAttributes="Bold"
+                                                       VerticalOptions="EndAndExpand"></Label>
+                                                <StackLayout Grid.Row="2"
+                                                             Grid.Column="1"
+                                                             Grid.ColumnSpan="3"
+                                                             Orientation="Horizontal"
+                                                             HorizontalOptions="FillAndExpand">
+                                                    <Label Text="{Binding DetalleInventario.DisplayCantidad}"
+                                                           FontSize="Small"
+                                                           FontAttributes="Bold"
+                                                           LineBreakMode="NoWrap"
+                                                           HorizontalOptions="FillAndExpand"
+                                                           VerticalOptions="StartAndExpand"></Label>
+                                                </StackLayout>
+                                                <Label Text="Alm."
+                                                       Grid.Row="3"
+                                                       FontSize="Small"
+                                                       Grid.Column="0"></Label>
+                                                <Label Text="{Binding DetalleInventario.DisplayCodigoAlmacen}"
+                                                       Grid.Row="3"
+                                                       Grid.Column="1"
+                                                       FontSize="Small"
+                                                       VerticalOptions="StartAndExpand"
+                                                       FontAttributes="Bold"></Label>
+                                                <Label Text="Lote"
+                                                       Grid.Row="3"
+                                                       FontSize="Small"
+                                                       Grid.Column="2"></Label>
+                                                <Label Text="{Binding DetalleInventario.Lote.Codigo}"
+                                                       Grid.Row="3"
+                                                       Grid.Column="3"
+                                                       FontSize="Small"
+                                                       VerticalOptions="StartAndExpand"
+                                                       FontAttributes="Bold"></Label>
+                                                <Switch IsToggled="{Binding IsSelected}"
+                                                        Grid.Row="0"
+                                                        Margin="0"
+                                                        Grid.Column="4"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Grid.RowSpan="7"></Switch>
+                                                <Label Text="{Binding DetalleInventario.Stock.Material.Codigo}"
+                                                       Grid.Row="4"
+                                                       Grid.Column="0"
+                                                       Grid.ColumnSpan="4"
+                                                       FontSize="Small"
+                                                       FontAttributes="Bold"></Label>
+                                                <Label Text="{Binding DetalleInventario.Stock.Material.Descripcion}"
+                                                       Grid.Row="5"
+                                                       Grid.Column="0"
+                                                       Grid.ColumnSpan="4"
+                                                       FontSize="Small"></Label>
+                                                <Label Grid.Row="6"
+                                                       Grid.Column="0"
+                                                       Grid.ColumnSpan="4"
+                                                       LineBreakMode="NoWrap"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       VerticalOptions="FillAndExpand"
+                                                       Text="{Binding DetalleInventario.DetalleStockEspecial.StockEspecial.NombreCampo}"></Label>
+                                                <Label Grid.Row="6"
+                                                       Grid.Column="2"
+                                                       Grid.ColumnSpan="3"
+                                                       BackgroundColor="Transparent"
+                                                       Text="{Binding DetalleInventario.DetalleStockEspecial.Detalle}"
+                                                       FontSize="Small"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       FontAttributes="Bold"></Label>
+                                            </Grid>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout Margin="10"
+                             VerticalOptions="End"
+                             Orientation="Horizontal">
+                    <Button Text="Aprobar"
+                            Command="{Binding AprobarCommand}"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource SuccessButton}"
+                            IsEnabled="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}" />
+                    <Button Text="Rechazar"
+                            Command="{Binding RechazarCommand}"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource DangerButton}"
+                            IsEnabled="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

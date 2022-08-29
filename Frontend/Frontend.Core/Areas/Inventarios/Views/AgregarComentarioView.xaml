@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.AgregarComentarioView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Spacing="20"
+                     Style="{StaticResource ContentBase}"
+                     VerticalOptions="FillAndExpand">
+            <Frame StyleClass="card"
+                   HasShadow="True"
+                   VerticalOptions="Fill">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Start">
+                        <Label Text="Motivo de rechazo"
+                               Style="{StaticResource TextLabel}" />
+                        <Editor  Text="{Binding Comentario.Value, Mode=TwoWay}"
+                                 IsEnabled="True"
+                                 AutoSize="TextChanges"
+                                 VerticalOptions="StartAndExpand"
+                                 HorizontalOptions="FillAndExpand" />
+                        <Label Text="{Binding Comentario.Errors, Converter={StaticResource FirstValidationError}}"
+                               IsVisible="{Binding Comentario.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                               Style="{StaticResource ValidationErrorLabelStyle}"
+                               VerticalOptions="Fill" />
+                    </StackLayout>
+                    <ScrollView>
+                        <StackLayout VerticalOptions="Start">
+                            <Label Text="Historial"
+                                   Style="{StaticResource TextLabel}"
+                                   IsVisible="{Binding ComentarioDisponible,Converter={StaticResource InverseBoolConverter}}" />
+                            <Label Text="{Binding ComentarioHistorico, Mode=TwoWay}"
+                                   LineBreakMode="WordWrap"
+                                   IsVisible="{Binding ComentarioDisponible,Converter={StaticResource InverseBoolConverter}}"
+                                   Style="{StaticResource ValueRedLabel}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+            <StackLayout Margin="10"
+                         VerticalOptions="EndAndExpand"
+                         Orientation="Horizontal">
+                <Button Text="Agregar"
+                        Command="{Binding AgregarCommand}"
+                        VerticalOptions="EndAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource MainButton}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

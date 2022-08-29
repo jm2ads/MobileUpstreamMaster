@@ -1,0 +1,14 @@
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\bin\Release\netstandard2.0\Frontend.Business.deps.json
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\bin\Release\netstandard2.0\Frontend.Business.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\bin\Release\netstandard2.0\Frontend.Business.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\bin\Release\netstandard2.0\Frontend.Commons.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\bin\Release\netstandard2.0\Frontend.Commons.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.csproj.AssemblyReference.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.AssemblyInfoInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.AssemblyInfo.cs
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.csproj.CoreCompileInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\XamlC.stamp
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.csproj.CopyComplete
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.Entities\obj\Release\netstandard2.0\Frontend.Business.pdb

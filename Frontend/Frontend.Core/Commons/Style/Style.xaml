@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary  xmlns="http://xamarin.com/schemas/2014/forms"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:converters1="clr-namespace:Frontend.Core.Commons.Converters;assembly=Frontend.Core"
+                     xmlns:behavoirs="clr-namespace:Frontend.Core.Commons.Behavoirs;assembly=Frontend.Core"
+                     x:Class="Frontend.Core.Commons.Style.Style">
+    <converters1:NumberConverter x:Key="EmptyNumber"></converters1:NumberConverter>
+    <converters1:InverseBoolConverter x:Key="InverseBoolConverter"></converters1:InverseBoolConverter>
+    <converters1:FirstValidationErrorConverter x:Key="FirstValidationError"></converters1:FirstValidationErrorConverter>
+    <converters1:EmptyStringConverter x:Key="EmptyStringConverter"></converters1:EmptyStringConverter>
+    <converters1:ColorEstadoConteoConverter x:Key="ColorEstadoConteoConverter"></converters1:ColorEstadoConteoConverter>
+    <Color x:Key="Primary">#1b60ab</Color>
+    <Color x:Key="Secondary">#2196F3</Color>
+    <Color x:Key="PrimaryDark">#164f8c</Color>
+    <Color x:Key="PrimaryLight">#2196F3</Color>
+    <Color x:Key="AccentColor">#f0ad4e</Color>
+    <Color x:Key="LightBackgroundColor">#FAFAFA</Color>
+    <Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
+    <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
+    <Color x:Key="LightTextColor">#999999</Color>
+    <Color x:Key="RedColor">#e74c3c</Color>
+    <Color x:Key="GreenColor">#27ae60</Color>
+    <Color x:Key="GrayColor">#f1f1f1</Color>
+    <Color x:Key="LightGrayColor">#b6b6b6</Color>
+    <Color x:Key="WhiteColor">#ffffff</Color>
+    <Color x:Key="YellowColor">#ffc107</Color>
+    <Color x:Key="InfoColor">#f28d22</Color>
+    <Image x:Key="SearchIcon"
+           Source="outline_info_white_18.png"
+           x:Shared="false" />
+    <Style x:Key="ValidationErrorLabelStyle"
+           TargetType="{x:Type Label}">
+        <Setter Property="TextColor"
+                Value="{StaticResource RedColor}" />
+        <Setter Property="FontSize"
+                Value="12" />
+    </Style>
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor"
+                Value="{StaticResource Primary}"></Setter>
+        <Setter Property="BarTextColor"
+                Value="White"></Setter>
+    </Style>
+    <Style TargetType="ContentPage"
+           ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundImage"
+                Value="app_bg.xml"></Setter>
+    </Style>
+    <Style x:Key="MainButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="White"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource PrimaryLight}"></Setter>
+    </Style>
+    <Style x:Key="SuccessButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="White"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource GreenColor}"></Setter>
+    </Style>
+    <Style x:Key="DangerButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="White"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource RedColor}"></Setter>
+    </Style>
+    <Style x:Key="InfoButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="White"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource PrimaryLight}"></Setter>
+    </Style>
+    <Style x:Key="WarningButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="White"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource YellowColor}"></Setter>
+    </Style>
+    <Style x:Key="SecondaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource MainButton}">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource LightBackgroundColor}"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource PrimaryLight}"></Setter>
+        <Setter Property="BorderColor"
+                Value="{StaticResource PrimaryLight}"></Setter>
+        <Setter Property="BorderWidth"
+                Value="2"></Setter>
+    </Style>
+    <Style x:Key="LoginButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource WhiteColor}"></Setter>
+    </Style>
+    <Style x:Key="PinLoginButton"
+           TargetType="Button">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource LightGrayColor}"></Setter>
+    </Style>
+    <Style x:Key="MainMenu"
+           TargetType="StackLayout">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource Primary}"></Setter>
+        <Setter Property="Padding"
+                Value="15"></Setter>
+        <Setter Property="Margin"
+                Value="15"></Setter>
+        <Setter Property="Spacing"
+                Value="0"></Setter>
+    </Style>
+    <Style x:Key="TitleBar"
+           TargetType="StackLayout">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource Primary}"></Setter>
+        <Setter Property="Padding"
+                Value="15"></Setter>
+        <Setter Property="Spacing"
+                Value="0"></Setter>
+    </Style>
+    <Style x:Key="InfoBar"
+           TargetType="StackLayout">
+        <Setter Property="HorizontalOptions"
+                Value="Fill"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource InfoColor}"></Setter>
+        <Setter Property="Padding"
+                Value="10"></Setter>
+        <Setter Property="Spacing"
+                Value="0"></Setter>
+    </Style>
+    <Style x:Key="MainMenu2"
+           TargetType="BoxView">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource Primary}"></Setter>
+    </Style>
+    <Style x:Key="SecondaryMenu"
+           TargetType="StackLayout"
+           BasedOn="{StaticResource MainMenu}">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource DarkBackgroundColor}"></Setter>
+    </Style>
+    <Style x:Key="SecondaryMenu2"
+           TargetType="AbsoluteLayout">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource DarkBackgroundColor}"></Setter>
+        <Setter Property="HorizontalOptions"
+                Value="FillAndExpand"></Setter>
+    </Style>
+    <Style x:Key="ContentBase"
+           TargetType="StackLayout"
+           BasedOn="{StaticResource MainMenu}">
+        <Setter Property="MinimumHeightRequest"
+                Value="0"></Setter>
+        <Setter Property="BackgroundColor"
+                Value="Transparent"></Setter>
+    </Style>
+    <Style x:Key="EntryStyle"
+           TargetType="{x:Type Entry}">
+        <Setter Property="behavoirs:LineColorBehavior.ApplyLineColor"
+                Value="True" />
+        <Setter Property="behavoirs:LineColorBehavior.LineColor"
+                Value="{StaticResource RedColor}" />
+    </Style>
+    <Style x:Key="LoginEntryStyle"
+           TargetType="{x:Type Entry}">
+        <Setter Property="behavoirs:LineColorBehavior.ApplyLineColor"
+                Value="True" />
+        <Setter Property="behavoirs:LineColorBehavior.LineColor"
+                Value="{StaticResource WhiteColor}" />
+        <Setter Property="TextColor"
+                Value="{StaticResource WhiteColor}" />
+        <Setter Property="PlaceholderColor"
+                Value="{StaticResource WhiteColor}" />
+    </Style>
+    <Style x:Key="UserId"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="15"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource GrayColor}"></Setter>
+    </Style>
+    <Style x:Key="UserName"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="15"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource WhiteColor}"></Setter>
+    </Style>
+    <Style x:Key="TitleLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+    </Style>
+    <Style x:Key="TextLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="LineBreakMode"
+                Value="TailTruncation"></Setter>
+        <Setter Property="WidthRequest"
+                Value="200"></Setter>
+        <Setter Property="FontSize"
+                Value="Small"></Setter>
+    </Style>
+    <Style x:Key="ValueLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource Primary}"></Setter>
+        <Setter Property="FontSize"
+                Value="18"></Setter>
+    </Style>
+    <Style x:Key="ValueRedLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource RedColor}"></Setter>
+        <Setter Property="FontSize"
+                Value="18"></Setter>
+    </Style>
+    <Style x:Key="LoginValueLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource WhiteColor}"></Setter>
+        <Setter Property="FontSize"
+                Value="18"></Setter>
+    </Style>
+    <Style x:Key="ValueEditor"
+           TargetType="{x:Type Editor}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="AutoSize"
+                Value="TextChanges" />
+        <Setter Property="IsEnabled"
+                Value="False" />
+        <Setter Property="TextColor"
+                Value="{StaticResource Primary}"></Setter>
+        <Setter Property="FontSize"
+                Value="18"></Setter>
+    </Style>
+    <Style x:Key="UserLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource Primary}"></Setter>
+    </Style>
+    <Style x:Key="SubTitleLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="TextColor"
+                Value="{StaticResource DarkBackgroundColor}"></Setter>
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+    </Style>
+    <Style x:Key="ItemTitleStyle"
+           TargetType="{x:Type Label}">
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+    </Style>
+    <Style x:Key="TitleBlackLabel"
+           TargetType="Label">
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+        <Setter Property="FontSize"
+                Value="20"></Setter>
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+    </Style>
+    <Style x:Key="TitleEmpty"
+           TargetType="Label">
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+        <Setter Property="FontSize"
+                Value="25"></Setter>
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+    </Style>
+    <Style x:Key="GroupItem"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="TextColor"
+                Value="Black"></Setter>
+        <Setter Property="FontSize"
+                Value="18"></Setter>
+    </Style>
+    <Style x:Key="SpinnerMessage"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource PrimaryLight}"></Setter>
+        <Setter Property="FontSize"
+                Value="Large"></Setter>
+    </Style>
+    <Style x:Key="SearchBackground"
+           TargetType="SearchBar">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource Secondary}"></Setter>
+        <Setter Property="PlaceholderColor"
+                Value="{StaticResource LightBackgroundColor}"></Setter>
+        <Setter Property="TextColor"
+                Value="{StaticResource WhiteColor}"></Setter>
+        <Setter Property="CancelButtonColor"
+                Value="{StaticResource WhiteColor}"></Setter>
+        <Setter Property="MenuItem.Icon"
+                Value="{DynamicResource SearchIcon}"></Setter>
+        <Setter Property="behavoirs:LineColorBehavior.ApplyLineColor"
+                Value="True" />
+        <Setter Property="behavoirs:LineColorBehavior.LineColor"
+                Value="{StaticResource Secondary}" />
+    </Style>
+</ResourceDictionary>

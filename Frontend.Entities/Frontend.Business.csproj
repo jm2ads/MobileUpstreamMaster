@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Movimientos\Ingresos\Searchers\**" />
+    <Compile Remove="Movimientos\Ingresos\Validations\**" />
+    <EmbeddedResource Remove="Movimientos\Ingresos\Searchers\**" />
+    <EmbeddedResource Remove="Movimientos\Ingresos\Validations\**" />
+    <None Remove="Movimientos\Ingresos\Searchers\**" />
+    <None Remove="Movimientos\Ingresos\Validations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
+    <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
+    <PackageReference Include="Unity" Version="5.8.5" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="3.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Frontend.Commons\Frontend.Commons.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="InventariosMasivos\Synchronizers\" />
+    <Folder Include="Movimientos\Ingresos\Pedido\Validations\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

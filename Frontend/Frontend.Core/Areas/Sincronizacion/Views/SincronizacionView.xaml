@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders"
+             x:Class="Frontend.Core.Areas.Sincronizacion.Views.SincronizacionView">
+    <ContentPage.ToolbarItems>
+        <customRenders:YpfToolbarItem Text="Movilidad Almacenes"></customRenders:YpfToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView 
+            BackgroundColor="GhostWhite" >
+            <StackLayout Spacing="10" Margin="20" 
+                    VerticalOptions="CenterAndExpand">
+
+                <StackLayout IsEnabled="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}" >
+                    <ActivityIndicator IsEnabled="{Binding IsBusy}" 
+                                   IsVisible="{Binding IsBusy}" 
+                                   IsRunning="{Binding IsBusy}"
+                                   VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                    <Label FontSize="Small"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                        Text="Sincronizando..."/>
+                </StackLayout>
+
+                <StackLayout 
+                    IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                    <Button Text="Sincronizar"
+                        x:Name="btnSincronizar"
+                    HorizontalOptions="FillAndExpand" Style="{StaticResource MainButton}"/>
+                </StackLayout>
+
+                <StackLayout 
+                    IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                    <Button Text="Sincronización parcial"
+                        x:Name="btnSincronizacionParcial"
+                    HorizontalOptions="FillAndExpand" Style="{StaticResource MainButton}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

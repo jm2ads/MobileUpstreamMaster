@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Areas.Views.VisualizarInformacionTraspasoView">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Style="{StaticResource ContentBase}"
+                         VerticalOptions="FillAndExpand">
+                <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                    <StackLayout VerticalOptions="FillAndExpand">
+                        <StackLayout Margin="10" VerticalOptions="Start">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Clase de movimiento" Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding ClaseDeMovimiento}"
+                               Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Centro Emisor"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding CentroEmisor, Mode=TwoWay}"
+                               Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Centro Receptor"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding CentroReceptor, Mode=TwoWay}"
+                               Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Fecha de documento"  Style="{StaticResource TextLabel}"/>
+
+                                <Label Text="{Binding FechaDocumento}"
+                                           Style="{StaticResource ValueLabel}"
+                                           HorizontalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Fecha de contabilización"  Style="{StaticResource TextLabel}"/>
+
+                                <Label Text="{Binding FechaContabilizacion}"
+                                           Style="{StaticResource ValueLabel}"
+                                           HorizontalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

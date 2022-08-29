@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.Traslado542PorMaterialView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource ContentBase }">
+            <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <StackLayout>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical">
+                            <Label 
+                            Text="Buscar por"                             
+                            Style="{StaticResource TextLabel}"/>
+                            <customRenders:PickerWithIcon                            
+                            Title="Seleccione..."
+                            x:Name="pickerFiltro"
+                            HorizontalOptions="FillAndExpand"
+                            DefaultIndex="0"
+                            Image="ic_keyboard_arrow_down_black_24dp"
+                            ItemsSource="{Binding ListaFiltros}"
+                            SelectedItem="{Binding Filtro, Mode=TwoWay}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="20" IsVisible="{Binding SearchByCodigo}">
+                        <StackLayout VerticalOptions="Start" >
+                            <Label Text="Código" Style="{StaticResource TextLabel}"/>
+                            <customRenders:AutoCompleteEntry 
+                            x:Name="autocompleteCodigo"
+                            Text="{Binding SearchValue, Mode=TwoWay}"
+                            Placeholder="Ingresar código"
+                            ItemsSource="{Binding ListMaterialesFull}"
+                            SearchCommand="{Binding GoToListadoTrasladoCommand}"
+                            ></customRenders:AutoCompleteEntry>
+                            <customRenders:InfoCardView
+                          Message="Oprima la pistola del dispositivo para realizar el ingreso mediante escaneo de código"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Spacing="20" IsVisible="{Binding SearchByCodigo, Converter={StaticResource InverseBoolConverter}}"  >
+                        <StackLayout VerticalOptions="Start" >
+                            <Label Text="Texto corto" Style="{StaticResource TextLabel}"/>
+                            <customRenders:AutoCompleteEntry 
+                            x:Name="autocompleteDescripcion"
+                            Text="{Binding SearchValue, Mode=TwoWay}"
+                            Placeholder="Ingresar texto corto"
+                            ItemsSource="{Binding ListDescripcionMateriales}"
+                            SearchCommand="{Binding GoToListadoTrasladoCommand}"
+                            ></customRenders:AutoCompleteEntry>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Text="Buscar"
+                        x:Name="btnCrear" 
+                        Style="{StaticResource MainButton}"
+                        Command="{Binding GoToListadoTrasladoCommand}"
+                        VerticalOptions="EndAndExpand" 
+                        HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

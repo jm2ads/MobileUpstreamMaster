@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Areas.Home.Views.HomeView"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <customRenders:YpfToolbarItem Text="{Binding AppName}"></customRenders:YpfToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Spacing="0"                     BackgroundColor="Transparent">
+
+
+
+                <StackLayout Style="{StaticResource InfoBar}"
+                IsVisible="{Binding HasSyncError, Mode=OneWay}">
+                    <Label Text="La útima sincronización no fue completada. Por favor revise el listado de fallas."/>
+                </StackLayout>
+                <flv:FlowListView Margin="20,0,20,0"
+                              FlowColumnCount="2"
+                              SeparatorVisibility="Default"
+                              HasUnevenRows="true"
+                              FlowItemsSource="{Binding Items}"
+                              BackgroundColor="Transparent"
+                              IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="{Binding Color}"
+                               Padding="0"
+                               Margin="5"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="150">
+                                <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Spacing="0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Command}" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Margin="5"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand">
+                                        <Image Source="{Binding Image}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="CenterAndExpand"></Image>
+                                        <Label Text="{Binding Title}"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+                <StackLayout Style="{StaticResource InfoBar}"
+                         IsVisible="{Binding IsPendingToSync, Mode=OneWay}">
+                    <Label Text="Existe información sin enviar. Recuerde sincronizar su dispositivo." />
+                </StackLayout>
+                <StackLayout VerticalOptions="End"
+                         HorizontalOptions="Fill"
+                         Orientation="Horizontal"
+                         BackgroundColor="{StaticResource Primary}"
+                         Margin="0"
+                         Padding="0">
+                    <StackLayout Orientation="Vertical"
+                             Spacing="0"
+                             Padding="5"
+                             HorizontalOptions="CenterAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CambiarCentroCommand}" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Fill">
+                            <Image Source="baseline_swap_horiz_white_24"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"></Image>
+                            <Label Text="Cambiar centro"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White"
+                               FontSize="Micro"
+                               LineBreakMode="WordWrap"
+                               HorizontalOptions="Center"
+                               VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"
+                             Spacing="0"
+                             Padding="5"
+                             HorizontalOptions="CenterAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SyncCommand}" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Fill">
+                            <Image Source="baseline_cached_white_24"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"></Image>
+                            <Label Text="Sincronizar"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White"
+                               FontSize="Micro"
+                               LineBreakMode="WordWrap"
+                               HorizontalOptions="Center"
+                               VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"
+                             Spacing="0"
+                             Padding="5"
+                             HorizontalOptions="CenterAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToLogCommand}" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Fill">
+                            <Image Source="round_bug_report_white_24"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"></Image>
+                            <Label Text="Lista de fallas"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White"
+                               FontSize="Micro"
+                               LineBreakMode="WordWrap"
+                               HorizontalOptions="Center"
+                               VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+
+
+
+
+            </StackLayout>
+            <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"  Opacity=".8"   BackgroundColor="Black" IsVisible="{Binding IsBusyOnDemand}">
+                <ActivityIndicator IsRunning="True" BackgroundColor="Black" VerticalOptions="EndAndExpand"  HorizontalOptions="Center"></ActivityIndicator>
+                <Label  HorizontalOptions="CenterAndExpand"  VerticalOptions="StartAndExpand" Text="Sincronizando..."  TextColor="#1b60ab"   x:Name="Sincronizando"   Style="{StaticResource SpinnerMessage}"></Label>
+            </StackLayout>
+            
+          
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

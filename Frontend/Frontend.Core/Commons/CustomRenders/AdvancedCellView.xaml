@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Commons.CustomRenders.AdvancedCellView">
+  <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="titulo1" Text="{Binding Titulo1}" 
+                     LineBreakMode="NoWrap"
+                     Style="{StaticResource TitleLabel}">
+                </Label>
+                    <Label x:Name="dato1" Text="{Binding Dato1}"
+                     LineBreakMode="NoWrap"
+                     Style="{StaticResource TextLabel}">
+                    </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="titulo2" Text="{Binding Titulo2}" 
+                     LineBreakMode="NoWrap"
+                     Style="{StaticResource TitleLabel}"></Label>
+                <Label x:Name="dato2" Text="{Binding Dato2}"
+                     LineBreakMode="NoWrap"
+                     Style="{StaticResource TextLabel}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="titulo3" Text="{Binding Titulo3}"
+                     LineBreakMode="NoWrap"
+                     Style="{StaticResource TitleLabel}"></Label>
+                <Label x:Name="dato3" Text="{Binding Dato3}"
+                     LineBreakMode="NoWrap"
+                     Style="{StaticResource TextLabel}"></Label>
+            </StackLayout>
+      </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behavoirs="clr-namespace:Frontend.Core.Commons.Behavoirs;assembly=Frontend.Core"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.DetalleMaterialSalidaInternaView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Style="{StaticResource ContentBase}">
+                <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                    <StackLayout>
+                        <Label Text="Código"  Style="{StaticResource TextLabel}"/>
+                        <Label Text="{Binding detalleSalidaInterna.Material.Codigo}"
+                               IsEnabled="False"
+                               Style="{StaticResource ValueLabel}"
+                               VerticalOptions="StartAndExpand" 
+                               HorizontalOptions="FillAndExpand" />
+
+                        <Label Text="Texto breve"  Style="{StaticResource TextLabel}"/>
+                        <Label Text="{Binding detalleSalidaInterna.Material.Descripcion}"                       
+                                Style="{StaticResource ValueLabel}"
+                               LineBreakMode="WordWrap"
+                       VerticalOptions="StartAndExpand"
+                       HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Almacén" Style="{StaticResource TextLabel}"/>
+                                <customRenders:PickerWithIcon
+                                        Title="Seleccione..."
+                                            HorizontalOptions="FillAndExpand"
+                                            WidthRequest="80"
+                                            Image="ic_keyboard_arrow_down_black_24dp"
+                                            ItemsSource="{Binding ListaAlmacen}"
+                                            ItemDisplayBinding="{Binding DisplayDescription}"    
+                                            SelectedIndex="{Binding AlmacenIndex, Mode=TwoWay}"                                   
+                                            SelectedItem="{Binding almacen.Value, Mode=OneWayToSource}" />
+                                <Label Text="{Binding almacen.Errors, Converter={StaticResource FirstValidationError}}"
+                                   IsVisible="{Binding almacen.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                                    Style="{StaticResource ValidationErrorLabelStyle}" VerticalOptions="Fill" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Posición"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding detalleSalidaInterna.Posicion}"    
+                               IsEnabled="False"
+                                       Style="{StaticResource ValueLabel}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Clase de valoración" Style="{StaticResource TextLabel}"/>
+                                <customRenders:PickerWithIcon
+                                        Title="Seleccione..."
+                                            HorizontalOptions="FillAndExpand"
+                                            WidthRequest="80"
+                                            Image="ic_keyboard_arrow_down_black_24dp"
+                                            ItemsSource="{Binding ListaClaseValoracion}"
+                                            ItemDisplayBinding="{Binding Codigo}"   
+                                            SelectedIndex="{Binding ClaseDeValoracionIndex, Mode=TwoWay}"                                    
+                                            SelectedItem="{Binding claseValoracion.Value, Mode=OneWayToSource}" />
+                                <Label Text="{Binding claseValoracion.Errors, Converter={StaticResource FirstValidationError}}"
+                                   IsVisible="{Binding claseValoracion.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                                    Style="{StaticResource ValidationErrorLabelStyle}" VerticalOptions="Fill" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical" WidthRequest="49" HorizontalOptions="FillAndExpand">
+                                <Label Text="Cantidad" Style="{StaticResource TextLabel}"/>
+                                <customRenders:NumericEntry Text="{Binding CantidadEnviada.Value, Mode=TwoWay}"  
+                                       Keyboard="Numeric" 
+                                       x:Name="txtQuantity"
+                                       HorizontalOptions="FillAndExpand">
+                                    <Entry.Style>
+                                        <OnPlatform x:TypeArguments="Style"
+                                    iOS="{StaticResource EntryStyle}"
+                                    Android="{StaticResource EntryStyle}"/>
+                                    </Entry.Style>
+                                    <Entry.Triggers>
+                                        <DataTrigger 
+                                    TargetType="Entry"
+                                    Binding="{Binding CantidadEnviada.IsValid}"
+                                    Value="False">
+                                            <Setter Property="behavoirs:LineColorBehavior.LineColor" 
+                                    Value="{StaticResource RedColor}" />
+                                        </DataTrigger>
+                                    </Entry.Triggers>
+                                </customRenders:NumericEntry>
+                                <Label Text="{Binding CantidadEnviada.Errors, Converter={StaticResource FirstValidationError}}"
+                                   IsVisible="{Binding CantidadEnviada.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                                    Style="{StaticResource ValidationErrorLabelStyle}" VerticalOptions="Fill" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" WidthRequest="49" HorizontalOptions="FillAndExpand">
+                                <Label Text="U. de medida" Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding detalleSalidaInterna.UnidadDeMedida}"
+                                       IsEnabled="False"
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand" 
+                                       HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                
+                <StackLayout VerticalOptions="EndAndExpand">
+                    <Button 
+                            Text="Confirmar"
+                            Command="{Binding ConfirmarCommand}"
+                            Style="{StaticResource MainButton}" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

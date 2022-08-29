@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.DetalleSalidaView"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="outline_info_white_24.png"
+                     Command="{Binding GoToCabeceraCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <customRenders:CustomSearchBar Placeholder="Filtrar por posición"
+                                           TextChanged="SearchBar_TextChanged"
+                                           Style="{StaticResource SearchBackground}"></customRenders:CustomSearchBar>
+            <ListView x:Name="ListViewItems"
+                      ItemsSource="{Binding ListaDetallesNotaDeReservas}"
+                      CachingStrategy="RecycleElementAndDataTemplate"
+                      HasUnevenRows="true"
+                      SeparatorVisibility="None"
+                      VerticalOptions="FillAndExpand"
+                      SelectedItem="{Binding DetalleReservaModelSelected, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0"
+                                               Grid.Column="0"
+                                               Text="Pos"
+                                               VerticalOptions="EndAndExpand"></Label>
+                                        <Label Grid.Row="0"
+                                               Grid.Column="1"
+                                               Grid.ColumnSpan="4"
+                                               Text="Cant"
+                                               VerticalOptions="EndAndExpand"></Label>
+                                        <Switch  Grid.Row="0"
+                                                 Grid.Column="5"
+                                                 Grid.RowSpan="5"
+                                                 IsToggled="{Binding EsContado, Mode=TwoWay}"></Switch>
+                                        <Label Text="{Binding DetalleNotaDeReserva.DetalleReserva.Posicion}"
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               FontSize="Small"
+                                               VerticalOptions="StartAndExpand"
+                                               FontAttributes="Bold"></Label>
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"                                               
+                                               Grid.ColumnSpan="4"
+                                               Text="{Binding DetalleNotaDeReserva.DisplayCantidad}"
+                                               FontSize="Small"
+                                               FontAttributes="Bold"
+                                               LineBreakMode="NoWrap"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="StartAndExpand"></Label>
+                                        <Label Text="{Binding DetalleNotaDeReserva.DetalleReserva.Material.Codigo}"
+                                               Grid.Row="2"
+                                               Grid.Column="0"
+                                               Grid.ColumnSpan="5"
+                                               VerticalOptions="StartAndExpand"
+                                               LineBreakMode="TailTruncation"></Label>
+                                        
+                                        <StackLayout Grid.Row="3"
+                                                     Grid.Column="0"
+                                                     Grid.ColumnSpan="5"
+                                                     Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="Ubicación"></Label>
+                                            <Label Text="{Binding Ubicacion}"
+                                                   FontAttributes="Bold"></Label>
+                                        </StackLayout>
+                                        
+                                        <Label Text="{Binding  DetalleNotaDeReserva.DetalleReserva.Material.Descripcion}"
+                                               Grid.Row="4"
+                                               Grid.Column="0"
+                                               Grid.ColumnSpan="5"
+                                               VerticalOptions="StartAndExpand"
+                                               LineBreakMode="TailTruncation"></Label>
+                                        <StackLayout Grid.Row="5"
+                                                     Grid.Column="0"
+                                                     Grid.ColumnSpan="5"
+                                                     Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="Clase de movimiento"></Label>
+                                            <Label Text="{Binding DetalleNotaDeReserva.DetalleReserva.ClaseDeMovimientoCodigo}"
+                                                   FontAttributes="Bold"></Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Margin="10"
+                         VerticalOptions="EndAndExpand">
+                <Button Text="Finalizar"
+                        Command="{Binding FinalizarCommand}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource MainButton}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

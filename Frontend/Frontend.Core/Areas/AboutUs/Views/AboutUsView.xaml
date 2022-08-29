@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Areas.AboutUs.Views.AboutUsView"
+             Title="Acerca de">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="StartAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Margin="30, 20, 50, 10">
+            <Frame StyleClass="card"
+                   HasShadow="True"
+                   VerticalOptions="Fill">
+                <StackLayout>
+                    <Label FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Text="{Binding ApplicationName}"></Label>
+                    <StackLayout HorizontalOptions="StartAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Margin="5, 10">
+                        <Label TextColor="Black">En caso de sugerencias y/o inconvenientes, póngase en contacto con la casilla:</Label>
+                        <StackLayout Spacing="2"
+                                     Orientation="Horizontal"
+                                     VerticalOptions="Center"
+                                     Margin="0, 20, 0, 20">
+                            <Image HeightRequest="40"
+                                   HorizontalOptions="End"
+                                   Source="ic_mail.png" />
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="{Binding LinkMailDescription}}"
+                                       HorizontalOptions="Center"
+                                       TextColor="Blue"
+                                       FontAttributes="Bold"
+                                       Margin="10, 0">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Spacing="2"
+                                     Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start">
+                                <Label Text="Versión"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label FontSize="13"
+                                       VerticalTextAlignment="End"
+                                       Text="{Binding VersionNumber}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start">
+                                <Label  Text="Build"
+                                        FontAttributes="Bold"
+                                        TextColor="Black" />
+                                <Label FontSize="13"
+                                       VerticalTextAlignment="End"
+                                       Text="{Binding BuildNumber}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start">
+                                <Label Text="Ambiente"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label  FontSize="13"
+                                        VerticalTextAlignment="End"
+                                        Text="{Binding Enviroment}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start">
+                                <Label Text="App Secret"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label  FontSize="13"
+                                        VerticalTextAlignment="End"
+                                        Text="{Binding ApplicationSecret}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start">
+                                <Button Text="Restablecer datos"
+                                        Command="{Binding RestablecerDatosCommand}"></Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

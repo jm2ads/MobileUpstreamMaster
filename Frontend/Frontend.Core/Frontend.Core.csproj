@@ -1,0 +1,736 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <NeutralLanguage>es-AR</NeutralLanguage>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Version>1.3</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="project.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AppCenter.Analytics.Metrics" Version="1.1.0" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Microsoft.AppCenter" Version="1.9.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.9.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Azure.Mobile.Client" Version="2.1.1" />
+    <PackageReference Include="Refractored.FloatingActionButtonForms" Version="2.1.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+    <PackageReference Include="sqlite-net-sqlcipher" Version="1.5.231" />
+    <PackageReference Include="Unity" Version="5.8.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.1.0.555618" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Frontend.Azure\Frontend.Azure.csproj" />
+    <ProjectReference Include="..\..\Frontend.Data\Frontend.Data.csproj" />
+    <ProjectReference Include="..\..\Frontend.Entities\Frontend.Business.csproj" />
+    <ProjectReference Include="..\..\Frontend.WebApi\Frontend.WebApi.csproj" />
+    <ProjectReference Include="..\Frontend.IServices\Frontend.IServices.csproj" />
+    <ProjectReference Include="..\Frontend.Services\Frontend.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\CambiosUbicacion\Views\CrearCambioUbicacionView.xaml.cs">
+      <DependentUpon>CrearCambioUbicacionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\InventariosMasivos\Views\InformacionInventarioMasivoView.xaml.cs">
+      <DependentUpon>InformacionInventarioMasivoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\InventariosMasivos\Views\ListadoPosicionesInventarioMasivoView.xaml.cs">
+      <DependentUpon>ListadoPosicionesInventarioMasivoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Inventarios\Views\ListaDetalleInventarioView.xaml.cs">
+      <DependentUpon>ListaDetalleInventarioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Devoluciones\Views\CabeceraDevolucionView.xaml.cs">
+      <DependentUpon>CabeceraDevolucionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Devoluciones\Views\DetalleMaterialDevolucionView.xaml.cs">
+      <DependentUpon>DetalleMaterialDevolucionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Devoluciones\Views\DetalleDevolucionView.xaml.cs">
+      <DependentUpon>DetalleDevolucionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Devoluciones\Views\VisualizarCabeceraDevolucionView.xaml.cs">
+      <DependentUpon>VisualizarCabeceraDevolucionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Ingresos\Views\IngresoCompraView.xaml.cs">
+      <DependentUpon>IngresoCompraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Ingresos\Views\IngresoCompraPorPedidoView.xaml.cs">
+      <DependentUpon>IngresoCompraPorPedidoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Ingresos\Views\PosicionesDePedidoView.xaml.cs">
+      <DependentUpon>PosicionesDePedidoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Reservas\Views\BusquedaMaterialView.xaml.cs">
+      <DependentUpon>BusquedaMaterialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\SalidaTraspaso\Views\CabeceraSalidaTraspasoView.xaml.cs">
+      <DependentUpon>CabeceraSalidaTraspasoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\SalidaTraspaso\Views\DetalleMaterialSalidaTraspasoView.xaml.cs">
+      <DependentUpon>DetalleMaterialSalidaTraspasoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\SalidaTraspaso\Views\ListadoPosicionesSalidaTraspasoView.xaml.cs">
+      <DependentUpon>ListadoPosicionesSalidaTraspasoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPedidoTraspasoMaterialView.xaml.cs">
+      <DependentUpon>SalidaPedidoTraspasoMaterialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPorPedidoTraspasoPedidoView.xaml.cs">
+      <DependentUpon>SalidaPorPedidoTraspasoPedidoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Traslados\Views\CrearTrasladoView.xaml.cs">
+      <DependentUpon>CrearTrasladoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado542View.xaml.cs">
+      <DependentUpon>DetalleMaterialTraslado542View.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado542View.xaml.cs">
+      <DependentUpon>ListaPosicionesTraslado542View.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Traslados\Views\Traslado309PorMaterialView.xaml.cs">
+      <DependentUpon>Traslado309PorMaterialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Movimientos\Traslados\Views\Traslado542PorMaterialView.xaml.cs">
+      <DependentUpon>Traslado542PorMaterialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\MessageText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MessageText.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Areas\AboutUs\Views\AboutUsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\CambioCentro\Views\CambioCentroView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\CambiosUbicacion\Modals\Views\SeleccionarAlmacenesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\CambiosUbicacion\Views\CrearCambioUbicacionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosAprobacionMasiva\Views\ListadoDeMaterialesAprobacionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\DetalleInventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\DetalleMaterialInventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\InformacionInventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\InventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\ListadoInventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\Modals\FiltrarAlmacenesModalView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\SearchMaterialMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\ListadoPosicionesInventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\InventariosMasivos\Views\VisualizarInformacionInventarioMasivoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\AgregarComentarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\AprobacionDetalleInventarioSapView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\ConsultaStockView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\CrearDetalleInventarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\DetalleStockView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\ListaInventarioProvisorioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\ListaInventarioRechazadoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\ListaInventarioSapView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\ListaInventarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\RecuentoDetalleInventarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\RecuentoDetalleMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\RecuentoInventarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\RecuentoMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\RecuentoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\ResultadoConsultaStockView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\SearchMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Inventarios\Views\VisualizarInformacionInventarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Login\Views\CrearPinView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Login\Views\IngresoUsuarioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Login\Views\ValidarPinView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\CabeceraDevolucionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\DetalleMaterialDevolucionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\DetalleDevolucionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\DevolucionMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\DevolucionReservaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\DevolucionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Devoluciones\Views\VisualizarCabeceraDevolucionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Ingresos\Views\CabeceraDePedidoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Ingresos\Views\IngresoCompraPorMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Ingresos\Views\IngresoCompraView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Ingresos\Views\IngresoCompraPorPedidoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Ingresos\Views\PosicionesDePedidoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Ingresos\Views\VisualizarInformacionPedidoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Reservas\Views\BusquedaReservaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Reservas\Views\BusquedaMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Reservas\Views\ReservaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidasInternas\Views\DetalleMaterialSalidaInternaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidasInternas\Views\CabeceraDeSalidaInternaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidasInternas\Views\SalidaPorVentaInternaMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidasInternas\Views\SalidaPorVentaInternaPedidoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidasInternas\Views\SalidaPorVentaInternaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidasInternas\Views\ListadoPosicionesSalidaInternaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\CabeceraSalidaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\DetalleMaterialSalidaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\DetalleSalidaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\SalidaMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\SalidaReservaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\SalidaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Salidas\Views\VisualizarCabeceraSalidaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\CabeceraSalidaTraspasoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\ListadoPosicionesSalidaTraspasoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPedidoTraspasoMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPedidoTrasladoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\DetalleMaterialSalidaTraspasoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPorPedidoTraspasoPedidoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\SalidaTraspaso\Views\VisualizarInformacionTraspasoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\CrearTrasladoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado309View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado311View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado321View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado541View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado542View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado309View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado311View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado321View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado541View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\Traslado309PorMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\Traslado311PorMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\Traslado321PorMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\Traslado541PorMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\TrasladoModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\Traslado542PorMaterialView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado542View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Movimientos\Traslados\Views\VisualizarCabeceraTrasladoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Sincronizacion\Views\SincronizacionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Commons\CustomRenders\AdvancedCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Commons\CustomRenders\EmptyView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Commons\CustomRenders\InfoCardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Commons\CustomRenders\Spinners\SpinnerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Commons\CustomRenders\TituloSubtituloNavigationView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MessageText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\CambioCentro\Models\" />
+    <Folder Include="Areas\Log\Models\" />
+    <Folder Include="Areas\InventariosMasivos\Models\" />
+    <Folder Include="Areas\Login\Models\" />
+    <Folder Include="Areas\Log\Models\" />
+    <Folder Include="Areas\Movimientos\Reservas\Models\" />
+    <Folder Include="Areas\Movimientos\SalidasInternas\Models\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Commons\Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\AboutUs\Views\AboutUsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Centers\Views\CentersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Home\Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\InventariosMasivos\Views\DetalleMaterialInventarioMasivoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\InventariosMasivos\Views\InformacionInventarioMasivoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\InventariosMasivos\Views\ListadoPosicionesInventarioMasivoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\InventariosMasivos\Views\SearchMaterialMasivoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\InventariosMasivos\Views\VisualizarInformacionInventarioMasivoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\AgregarComentarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\AprobacionDetalleInventarioProvisorioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\AprobacionDetalleInventarioSapView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\AprobacionInventarioProvisorioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\AprobacionInventarioSapView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\AprobacionInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ConsultaStockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\CrearDetalleInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\DetalleStockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\InformacionInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ListaDetalleInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ListaInventarioProvisorioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ListaInventarioRechazadoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ListaInventarioSapView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ListaInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\RecuentoDetalleInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\RecuentoDetalleMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\RecuentoInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\RecuentoMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\RecuentoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\ResultadoConsultaStockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\SearchMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\VisualizarDetalleInventarioSapView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\VisualizarDetalleMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Inventarios\Views\VisualizarInformacionInventarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Login\Views\CrearPinView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Login\Views\IngresoUsuarioView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Login\Views\LoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Login\Views\ValidarPinView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Log\Views\InventariosLogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Log\Views\LogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Log\Views\MovimientosLogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\CabeceraReservaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\DetalleMaterialReservaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\DetalleReservaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\DevolucionMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\DevolucionReservaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\DevolucionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Devoluciones\Views\VisualizarCabeceraReservaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\CabeceraDePedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\DetalleDeMaterialPedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\IngresoCompraPorMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\IngresoCompraPorPedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\IngresoCompraView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\PosicionesDePedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Ingresos\Views\VisualizarInformacionPedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidasInternas\Views\CabeceraDeSalidaInternaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidasInternas\Views\DetalleMaterialSalidaInternaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidasInternas\Views\ListadoPosicionesSalidaInternaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidasInternas\Views\SalidaPorVentaInternaMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidasInternas\Views\SalidaPorVentaInternaPedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidasInternas\Views\SalidaPorVentaInternaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\CabeceraSalidaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\DetalleMaterialSalidaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\DetalleSalidaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\SalidaMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\SalidaReservaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\SalidaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Salidas\Views\VisualizarCabeceraSalidaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\CabeceraSalidaTraspasoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\DetalleMaterialSalidaTraspasoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\ListadoPosicionesSalidaTraspasoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPedidoTrasladoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPedidoTraspasoMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\SalidaPorPedidoTraspasoPedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\SalidaTraspaso\Views\VisualizarInformacionTraspasoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\CrearTrasladoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado309View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado311View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado541View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\DetalleMaterialTraslado542View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado309View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado311View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado541View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\ListaPosicionesTraslado542View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\Traslado309PorMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\Traslado311PorMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\Traslado541PorMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\Traslado542PorMaterialView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\TrasladoModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Movimientos\Traslados\Views\VisualizarCabeceraTrasladoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Areas\Sincronizacion\Views\SincronizacionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\AdvancedCellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\CircleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\EmptyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\InfoCardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\SpinnerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\TitleNavigationBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\CustomRenders\TituloSubtituloNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Commons\Style\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\BusinessStartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\MasterMenulview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\NeedView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SideBarMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

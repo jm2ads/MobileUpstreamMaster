@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.VisualizarDetalleMaterialView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Style="{StaticResource ContentBase}">
+                <Frame StyleClass="card"
+                       HasShadow="True"
+                       VerticalOptions="Fill">
+                    <StackLayout>
+                        <ActivityIndicator IsEnabled="{Binding IsBusy}"
+                                           IsVisible="{Binding IsBusy}"
+                                           IsRunning="{Binding IsBusy}"
+                                           VerticalOptions="CenterAndExpand" />
+                        <StackLayout>
+                            <StackLayout Margin="10"
+                                         VerticalOptions="Start"
+                                         IsVisible="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}">
+                                <Label Text="Documento de inventario"
+                                       Style="{StaticResource TextLabel}" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding detalleInventario.Inventario.Codigo}"
+                                           Style="{StaticResource ValueLabel}"
+                                           HorizontalOptions="FillAndExpand"></Label>
+                                </StackLayout>
+                                <Label Text="Código"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding detalleInventario.Stock.Material.Codigo}"
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                                <Label Text="Texto breve"
+                                       Style="{StaticResource TextLabel}" />
+                                <Label Text="{Binding detalleInventario.Stock.Material.Descripcion}"
+                                       Style="{StaticResource ValueLabel}"
+                                       VerticalOptions="StartAndExpand"
+                                       HorizontalOptions="FillAndExpand" />
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="Centro"
+                                               Style="{StaticResource TextLabel}" />
+                                        <Label Text="{Binding detalleInventario.Inventario.Centro.Codigo}"
+                                               Style="{StaticResource ValueLabel}"
+                                               VerticalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="Lote"
+                                               Style="{StaticResource TextLabel}" />
+                                        <Label Text="{Binding detalleInventario.Lote.Codigo}"
+                                               Style="{StaticResource ValueLabel}"
+                                               VerticalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="Almacén"
+                                               Style="{StaticResource TextLabel}" />
+                                        <Label Text="{Binding detalleInventario.Inventario.Almacen.Codigo}"
+                                               Style="{StaticResource ValueLabel}"
+                                               VerticalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="Ubicación"
+                                               Style="{StaticResource TextLabel}" />
+                                        <Label Text="{Binding detalleInventario.Ubicacion}"
+                                               Style="{StaticResource ValueLabel}"
+                                               VerticalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="Cant."
+                                               Style="{StaticResource TextLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding detalleInventario.CantidadContada}"
+                                                   Style="{StaticResource ValueLabel}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="EndAndExpand"></Label>
+                                            <Label Text="/"
+                                                   Style="{StaticResource ValueLabel}"
+                                                   FontSize="Medium"
+                                                   IsVisible="{Binding ShowCantidad}"
+                                                   VerticalOptions="EndAndExpand"></Label>
+                                            <Label Text="{Binding detalleInventario.CantidadStock}"
+                                                   Style="{StaticResource ValueLabel}"
+                                                   IsVisible="{Binding ShowCantidad}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="EndAndExpand"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="U. de medida"
+                                               Style="{StaticResource TextLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding detalleInventario.UnidadAlmacen, Mode=TwoWay}"
+                                                   Style="{StaticResource ValueLabel}"
+                                                   HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical"
+                                             IsEnabled="{Binding IsPepEnabled}"
+                                             IsVisible="{Binding IsPepEnabled}">
+                                    <Label Text="{Binding detalleInventario.DetalleStockEspecial.StockEspecial.NombreCampo}"
+                                           Style="{StaticResource TextLabel}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding detalleInventario.DetalleStockEspecial.Detalle}"
+                                               Style="{StaticResource ValueLabel}"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical"
+                                             IsEnabled="{Binding IsProveedorEnabled}"
+                                             IsVisible="{Binding IsProveedorEnabled}">
+                                    <Label Text="{Binding detalleInventario.DetalleStockEspecial.StockEspecial.NombreCampo}"
+                                           Style="{StaticResource TextLabel}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding detalleInventario.DetalleStockEspecial.Detalle}"
+                                               Style="{StaticResource ValueLabel}"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Tipo de stock"
+                                           Style="{StaticResource TextLabel}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding DisplayTipoStock}"
+                                               Style="{StaticResource ValueLabel}"
+                                               HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" IsVisible="{Binding ShowComentario}">
+                                    <Label Text="Motivo de rechazo"
+                                           Style="{StaticResource TextLabel}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Editor  Text="{Binding Comentario, Mode=TwoWay}"
+                                                 IsEnabled="True"
+                                                 AutoSize="TextChanges"
+                                                 VerticalOptions="StartAndExpand"
+                                                 Placeholder="Ingrese un comentario"
+                                                 HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Margin="10"
+                                             VerticalOptions="EndAndExpand"
+                                             Orientation="Horizontal" 
+                                             IsVisible="{Binding ShowComentario}">
+                                    <Button Text="Aceptar"
+                                            Command="{Binding AceptarCommand}"
+                                            VerticalOptions="EndAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            Style="{StaticResource MainButton}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

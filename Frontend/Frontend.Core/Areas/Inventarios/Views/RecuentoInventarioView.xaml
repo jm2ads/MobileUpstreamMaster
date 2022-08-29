@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.RecuentoInventarioView"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource ContentBase }">
+            <StackLayout Spacing="20"
+                         VerticalOptions="FillAndExpand">
+                <Frame StyleClass="card"
+                       HasShadow="True"
+                       VerticalOptions="Fill">
+                    <StackLayout VerticalOptions="Start">
+                        <Label Text="Número de inventario"
+                               Style="{StaticResource TextLabel}" />
+                        <customRenders:AutoCompleteEntry x:Name="autocompleteDescripcion"
+                                                         Text="{Binding SearchValue, Mode=TwoWay}"
+                                                         Placeholder="Ingresar número de inventario"
+                                                         ItemsSource="{Binding ListCodigoInventario}"
+                                                         SearchCommand="{Binding SearchInventarioCommand}"></customRenders:AutoCompleteEntry>
+                    </StackLayout>
+                </Frame>
+                <StackLayout VerticalOptions="EndAndExpand">
+                    <Button Text="Buscar"
+                            x:Name="btnCrear"
+                            Style="{StaticResource MainButton}"
+                            Command="{Binding SearchInventarioCommand}"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

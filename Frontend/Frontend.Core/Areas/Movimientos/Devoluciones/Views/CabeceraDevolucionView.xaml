@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.CabeceraDevolucionView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Style="{StaticResource ContentBase}"
+                         VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                        <StackLayout Margin="10" VerticalOptions="Start">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Clase de movimiento"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding notaDeReserva.Reserva.ClaseDeMovimiento}" 
+                                   Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Centro"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding setting.CentroActivo.Codigo}"  
+                                   Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                                         IsVisible="{Binding IsAlmacenEnabled}">
+                                <Label Text="{Binding NombreImputacion}"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding notaDeReserva.Reserva.Imputacion}"    
+                                   Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                                         IsVisible="{Binding IsAlmacenEnabled}">
+                                <Label Text="Texto de cabecera"  Style="{StaticResource TextLabel}"/>
+                                <Entry Text="{Binding TextoCabecera}"  
+                                   MaxLength="25"
+                                       Placeholder="Texto de cabecera"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Texto de posición genérico"  Style="{StaticResource TextLabel}"/>
+                                <Entry Text="{Binding TextoPosicionGenerico}"  
+                                   MaxLength="25"
+                                       Placeholder="Texto posición genérico"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Fecha de documento"  Style="{StaticResource TextLabel}"/>
+                                <customRenders:DatePickerWithIcon 
+                                        Image="baseline_date_range_black_24"
+                                        Date="{Binding FechaDocumento.Value}"                                        
+                                        Format="dd/MM/yyyy"></customRenders:DatePickerWithIcon>
+                                <Label Text="{Binding FechaDocumento.Errors, Converter={StaticResource FirstValidationError}}"
+                                   IsVisible="{Binding FechaDocumento.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                                    Style="{StaticResource ValidationErrorLabelStyle}" VerticalOptions="Fill" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Fecha de contabilización"  Style="{StaticResource TextLabel}"/>
+                                <customRenders:DatePickerWithIcon 
+                                        Date="{Binding FechaContabilizacion.Value}"
+                                        Image="baseline_date_range_black_24"
+                                        Format="dd/MM/yyyy"
+                                        MinimumDate="{Binding FechaContabilizacion}"></customRenders:DatePickerWithIcon>
+                                <Label Text="{Binding FechaContabilizacion.Errors, Converter={StaticResource FirstValidationError}}"
+                                   IsVisible="{Binding FechaContabilizacion.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                                    Style="{StaticResource ValidationErrorLabelStyle}" VerticalOptions="Fill" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <StackLayout Margin="10"  VerticalOptions="EndAndExpand">
+                        <Button Style="{StaticResource MainButton}"
+                                VerticalOptions="EndAndExpand" 
+                                HorizontalOptions="FillAndExpand" 
+                                Text="Aplicar"
+                                Command="{Binding AplicarCommand}"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Commons.CustomRenders.TitleNavigationBar">
+    <ContentView.Content>
+        <StackLayout Spacing="2" Orientation="Horizontal" Style="{StaticResource SecondaryMenu}">
+            <Image x:Name="Image" Source="ic_keyboard_backspace_black_24dp.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="imageTap"
+                                          NumberOfTapsRequired="1">
+                    </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <StackLayout Style="{StaticResource SecondaryMenu}">
+                <Label x:Name="titleBar" Style="{DynamicResource SubtitleStyle}" TextColor="Black" LineBreakMode="TailTruncation"  WidthRequest="285"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

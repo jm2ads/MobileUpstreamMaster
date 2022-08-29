@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.VisualizarDetalleInventarioSapView"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             xmlns:behavoirs="clr-namespace:Frontend.Core.Commons.Behavoirs;assembly=Frontend.Core"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="outline_info_white_24.png"
+                     Command="{Binding GoToInformacionInventarioCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView  x:Name="ListViewItems"
+                   ItemsSource="{Binding ListaDetallesDeInventario}"
+                   HasUnevenRows="true"
+                   SeparatorVisibility="None"
+                   CachingStrategy="RecycleElementAndDataTemplate"
+                   SelectedItem="{Binding DetalleInventarioSelected, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="10">
+                            <StackLayout Orientation="Horizontal">
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0"
+                                                 Grid.Column="0">
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="Pos"
+                                                   VerticalOptions="EndAndExpand"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="0"
+                                                 Grid.Column="1">
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="Cant"
+                                                   VerticalOptions="EndAndExpand"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1"
+                                                 Grid.Column="0">
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Posicion}"
+                                                   FontSize="Medium"
+                                                   VerticalOptions="StartAndExpand"
+                                                   FontAttributes="Bold"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="1"
+                                                 Grid.Column="1">
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Cantidad}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold"
+                                                   LineBreakMode="TailTruncation"
+                                                   VerticalOptions="StartAndExpand"></Label>
+                                            <Label Text="{Binding UnidadAlmacen}"
+                                                   VerticalOptions="EndAndExpand"
+                                                   LineBreakMode="TailTruncation"
+                                                   FontAttributes="Bold"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="2"
+                                                 Grid.Column="0"
+                                                 Grid.ColumnSpan="2">
+                                        <Label Text="{Binding Stock.Material.Descripcion}"
+                                               VerticalOptions="StartAndExpand"
+                                               LineBreakMode="TailTruncation"></Label>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

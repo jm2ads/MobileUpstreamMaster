@@ -1,0 +1,42 @@
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Ingenieria de Desarrollo/Pipelines
+    # Pool a utilizar en la ejecución de las tasks.
+
+pool:
+  vmImage: 'macOS-10.15'
+
+variables:
+- group: Android
+
+jobs:
+# definición de la ruta dentro del repositorio especificado
+- template: Build/xamarin-template.yml@templates  # Template reference
+  
+  parameters:
+    # especifica si deben firmarse los binarios de las plataformas a compilar, aplica para ambas.
+    signAPP: true
+
+    # Indica el tipo de build a ejecutar para ambas plataformas.
+    buildConfiguration: Release
+
+    # Parámetros para la compilación de Android
+    droidBuild: true
+    apkKeystoreFile: '$(KeystoreFile)'
+    apkKeystorePassword: '$(KeystorePass)'
+    appKeystoreAlias: '$(KeystoreAlias)'
+    appKeyPassword: '$(KeyPass)'
+    
+    # Parámetros para la ejecución de SonarQube
+    projectKey: 'movalm.android'
+    projectName: 'Movilidad Almacenes Android'
+    sonarEndpoint: Sonar
+
+    # Parámetros para el despliegue en AppCenter del APK
+    distributeAndroid: true
+    appCenterEndpointAndroid: '$(AppCenterServiceConnection)'
+    appSlugAndroid: '$(AppSlug)'
+    releaseNotesAndroid: '$(ReleaseNotes)'
+    distributeGroupIdAndroid: '$(BetaTestersGroup)'

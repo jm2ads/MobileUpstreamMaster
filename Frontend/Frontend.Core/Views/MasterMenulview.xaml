@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Views.MasterMenulview"
+             xmlns:pages="clr-namespace:Frontend.Core.Views"
+                  xmlns:views="clr-namespace:Frontend.Core.Areas.Home.Views"
+                  Title="Inicio">
+    <MasterDetailPage.Master>
+        <pages:SideBarMenuView x:Name="MasterPage"/>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <views:HomeView></views:HomeView>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

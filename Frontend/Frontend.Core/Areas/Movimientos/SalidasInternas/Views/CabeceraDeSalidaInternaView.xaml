@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend.Core.Areas.Views.CabeceraDeSalidaInternaView"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Style="{StaticResource ContentBase}"
+                         VerticalOptions="FillAndExpand">
+                <Frame StyleClass="card" 
+               HasShadow="True" VerticalOptions="Fill">
+                    <StackLayout VerticalOptions="FillAndExpand">
+                        <StackLayout Margin="10" VerticalOptions="Start">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Clase de movimiento" Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding ClaseDeMovimiento}"
+                               Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Centro"  Style="{StaticResource TextLabel}"/>
+                                <Label Text="{Binding Centro, Mode=TwoWay}"
+                               Style="{StaticResource ValueLabel}"
+                               IsEnabled="False"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Fecha de documento"  Style="{StaticResource TextLabel}"/>
+
+                                <Label Text="{Binding FechaDocumento}"
+                                           Style="{StaticResource ValueLabel}"
+                                           HorizontalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Fecha de contabilización"  Style="{StaticResource TextLabel}"/>
+
+                                <Label Text="{Binding FechaContabilizacion}"
+                                           Style="{StaticResource ValueLabel}"
+                                           HorizontalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
+                <StackLayout Margin="10"  VerticalOptions="EndAndExpand">
+                    <Button 
+                        Text="Aplicar"
+                        Command="{Binding GoToPosicionesCommand }"
+                        VerticalOptions="EndAndExpand" 
+                        HorizontalOptions="FillAndExpand" Style="{StaticResource MainButton}" />
+                </StackLayout>                    
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

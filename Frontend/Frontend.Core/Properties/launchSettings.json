@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Frontend.Core": {
+      "commandName": "Project"
+    }
+  }
+}

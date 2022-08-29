@@ -1,0 +1,17 @@
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.WebApi.deps.json
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.WebApi.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.WebApi.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.Business.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.Commons.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.IServices.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.Commons.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.Business.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\bin\Debug\netstandard2.0\Frontend.IServices.pdb
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.csproj.AssemblyReference.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.AssemblyInfoInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.AssemblyInfo.cs
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.csproj.CoreCompileInputs.cache
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.csproj.CopyComplete
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.dll
+D:\JM2\WP\Demos\MobileUpstreamMaster\Frontend.WebApi\obj\Debug\netstandard2.0\Frontend.WebApi.pdb

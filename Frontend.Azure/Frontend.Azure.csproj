@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Azure.Mobile.Client.SQLiteStore" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Frontend.Entities\Frontend.Business.csproj" />
+    <ProjectReference Include="..\Frontend\Frontend.IServices\Frontend.IServices.csproj" />
+    <ProjectReference Include="..\Frontend\Frontend.Services\Frontend.Services.csproj" />
+  </ItemGroup>
+
+</Project>

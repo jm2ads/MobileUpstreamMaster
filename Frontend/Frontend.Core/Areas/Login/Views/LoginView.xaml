@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behavoirs="clr-namespace:Frontend.Core.Commons.Behavoirs;assembly=Frontend.Core"
+             xmlns:customRenders="clr-namespace:Frontend.Core.Commons.CustomRenders;assembly=Frontend.Core"
+             x:Class="Frontend.Core.Views.LoginView"
+             Title="{Binding Title}"
+             BackgroundImage="login_blured_bg.png">
+    <StackLayout Style="{StaticResource ContentBase}"
+                 VerticalOptions="Center">
+        <StackLayout>
+            <Label Text="Usuario"
+                   Style="{StaticResource LoginEntryStyle}"></Label>
+            <Label x:Name="UserEntry"
+                   Style="{StaticResource LoginValueLabel}"
+                   Text="{Binding Username.Value}" />
+        </StackLayout>
+        <StackLayout Margin="0,10">
+            <customRenders:CustomLoginEntry x:Name="PassEntry"
+                                            Placeholder="Ingrese la contraseña"
+                                            Text="{Binding Password.Value}"
+                                            IsPassword="True">
+                <Entry.Style>
+                    <OnPlatform x:TypeArguments="Style"
+                                iOS="{StaticResource LoginEntryStyle}"
+                                Android="{StaticResource LoginEntryStyle}" />
+                </Entry.Style>
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding Password.IsValid}"
+                                 Value="False">
+                        <Setter Property="behavoirs:LineColorBehavior.LineColor"
+                                Value="{StaticResource RedColor}" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </customRenders:CustomLoginEntry>
+            <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationError}}"
+                   Style="{StaticResource ValidationErrorLabelStyle}"
+                   IsVisible="{Binding Password.IsValid,Converter={StaticResource InverseBoolConverter}}" />
+        </StackLayout>
+        <StackLayout Margin="0,10">
+            <customRenders:PickerWithIcon Title="Seleccione..."
+                                          HorizontalOptions="FillAndExpand"
+                                          WidthRequest="80"
+                                          Image="baseline_expand_more_white_24"
+                                          TextColor="White"
+                                          CustomStyle="{Binding CustomStyle}"
+                                          ItemsSource="{Binding ListaCentros}"
+                                          ItemDisplayBinding="{Binding DisplayDescription}"
+                                          SelectedItem="{Binding Centro.Value, Mode=TwoWay}" />
+            <Label Text="{Binding Centro.Errors, Converter={StaticResource FirstValidationError}}"
+                   IsVisible="{Binding Centro.IsValid,Converter={StaticResource InverseBoolConverter}}"
+                   Style="{StaticResource ValidationErrorLabelStyle}" />
+        </StackLayout>
+        <StackLayout Padding="5"
+                     Margin="0,10"
+                     VerticalOptions="EndAndExpand">
+            <Button x:Name="ExpandButton"
+                    VerticalOptions="EndAndExpand"
+                    Text="Ingresar"
+                    Command="{Binding LoginCommand}"
+                    Style="{StaticResource LoginButton}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

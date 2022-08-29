@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "CaWQsnStl6NkXx7hs5AL0bLKSUhWSYlahmUdSamGa57rwZHKf932W7m75X9ipLjG4Ocm757AVf8It2mxT8ojCQ==",
+  "success": true,
+  "projectFilePath": "D:\\JM2\\WP\\Demos\\MobileUpstreamMaster\\Frontend.Commons\\Frontend.Commons.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Facundo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Facundo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Facundo\\.nuget\\packages\\unity\\5.8.5\\unity.5.8.5.nupkg.sha512"
+  ],
+  "logs": []
+}
